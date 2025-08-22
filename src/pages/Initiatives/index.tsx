@@ -1,6 +1,7 @@
 import React from 'react';
 import { useResponsive } from '../../hooks/useResponsive';
 import { useFilteredData } from '../../hooks/useFilteredData';
+import { SmartSearch } from '../../components';
 
 /**
  * Props para el componente Initiatives
@@ -86,12 +87,17 @@ export const Initiatives: React.FC<InitiativesProps> = () => {
             <h1 className={`font-bold text-white mb-6 tracking-tight ${isMobile ? 'text-4xl' : isTablet ? 'text-5xl' : 'text-6xl'}`}>
               INICIATIVAS <span className="text-orange-400">ESTRATÉGICAS</span>
             </h1>
-            <p className={`text-white/90 max-w-3xl mx-auto leading-relaxed ${isMobile ? 'text-lg' : 'text-xl'}`}>
+            <p className={`text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 ${isMobile ? 'text-lg' : 'text-xl'}`}>
               Planes de acción con las alianzas internas para el desarrollo y crecimiento institucional
             </p>
             
+            {/* Buscador inteligente */}
+            <div className="mb-8">
+              <SmartSearch placeholder="Buscar iniciativas, proyectos, stakeholders..." />
+            </div>
+            
             {/* Indicador de filtro */}
-            <div className="mt-8 inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
+            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
               <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
               <span className="text-white/90 text-sm font-medium">{getFilterIndicator()}</span>
             </div>

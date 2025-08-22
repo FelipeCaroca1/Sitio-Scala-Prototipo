@@ -16,3 +16,12 @@ export { AllianceSelector } from './AllianceSelector';
 
 // ErrorBoundary
 export { ErrorBoundary } from './ErrorBoundary';
+
+// SearchBar
+export { SearchBar } from './SearchBar';
+
+// SearchResults
+export { SearchResults } from './SearchResults';
+
+// SmartSearch
+export { SmartSearch } from './SmartSearch';
