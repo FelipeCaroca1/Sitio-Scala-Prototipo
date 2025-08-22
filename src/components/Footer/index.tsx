@@ -20,27 +20,27 @@ export const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className="bg-gray-900 text-white">
       {/* Contenido principal del footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className={`grid gap-8 ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-4'}`}>
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isMobile ? 'py-8' : 'py-12'}`}>
+        <div className={`grid ${isMobile ? 'gap-6' : 'gap-8'} ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-4'}`}>
           
           {/* Logo y descripción */}
           <div className={`${isMobile ? 'text-center' : ''}`}>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">S</span>
+            <div className={`flex items-center ${isMobile ? 'justify-center' : ''} space-x-2 mb-4`}>
+              <div className={`${isMobile ? 'w-6 h-6' : 'w-8 h-8'} bg-gradient-to-br from-indigo-600 to-purple-700 rounded-lg flex items-center justify-center`}>
+                <span className={`text-white font-bold ${isMobile ? 'text-base' : 'text-lg'}`}>S</span>
               </div>
-              <span className="text-xl font-bold">
+              <span className={`${isMobile ? 'text-lg' : 'text-xl'} font-bold`}>
                 scala <span className="text-orange-500">LEARNING</span>
               </span>
             </div>
-            <p className="text-gray-300 text-sm leading-relaxed">
+            <p className={`text-gray-300 ${isMobile ? 'text-xs' : 'text-sm'} leading-relaxed`}>
               Alianza estratégica que impulsa la educación virtual y la innovación tecnológica en Latinoamérica.
             </p>
           </div>
 
           {/* Enlaces rápidos */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-orange-400">Enlaces Rápidos</h3>
+            <h3 className={`${isMobile ? 'text-base' : 'text-lg'} font-semibold mb-4 text-orange-400`}>Enlaces Rápidos</h3>
             <ul className="space-y-2">
               <li>
                 <a href="/" className="text-gray-300 hover:text-orange-400 transition-colors text-sm">
@@ -67,20 +67,22 @@ export const Footer: React.FC<FooterProps> = () => {
 
           {/* Alianzas */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-orange-400">Alianzas</h3>
-            <ul className="space-y-2">
-              <li className="text-gray-300 text-sm">KAPIT</li>
-              <li className="text-gray-300 text-sm">UNIR</li>
-              <li className="text-gray-300 text-sm">UDD</li>
-              <li className="text-gray-300 text-sm">Crescal</li>
-              <li className="text-gray-300 text-sm">UP</li>
-              <li className="text-gray-300 text-sm">UCES</li>
-            </ul>
+            <h3 className={`${isMobile ? 'text-base' : 'text-lg'} font-semibold mb-4 text-orange-400`}>Alianzas</h3>
+            <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-3'}`}>
+              <span className="text-gray-300 text-sm">Central</span>
+              <span className="text-gray-300 text-sm">UNIS</span>
+              <span className="text-gray-300 text-sm">UP</span>
+              <span className="text-gray-300 text-sm">UCSS</span>
+              <span className="text-gray-300 text-sm">EAFIT</span>
+              <span className="text-gray-300 text-sm">Uninorte</span>
+              <span className="text-gray-300 text-sm">UNAB</span>
+              <span className="text-gray-300 text-sm">UDD</span>
+            </div>
           </div>
 
           {/* Contacto */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-orange-400">Contacto</h3>
+            <h3 className={`${isMobile ? 'text-base' : 'text-lg'} font-semibold mb-4 text-orange-400`}>Contacto</h3>
             <div className="space-y-2">
               <div className="flex items-center text-gray-300 text-sm">
                 <svg className="w-4 h-4 mr-2 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,12 +108,12 @@ export const Footer: React.FC<FooterProps> = () => {
         </div>
 
         {/* Separador */}
-        <div className="border-t border-gray-700 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm text-center md:text-left">
+        <div className={`border-t border-gray-700 ${isMobile ? 'mt-6 pt-6' : 'mt-8 pt-8'}`}>
+          <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} justify-between items-center`}>
+            <p className={`text-gray-400 text-sm ${isMobile ? 'text-center' : 'text-left'}`}>
               © 2024 Scala Learning. Todos los derechos reservados.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            <div className={`flex space-x-6 ${isMobile ? 'mt-4' : 'mt-0'}`}>
               <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">
                 <span className="sr-only">LinkedIn</span>
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
