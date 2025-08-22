@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Solo prevenir overflow horizontal básico */
+html, body {
+  overflow-x: hidden;
+}

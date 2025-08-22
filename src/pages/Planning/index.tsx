@@ -35,7 +35,7 @@ export const Planning: React.FC<PlanningProps> = () => {
           </div>
           
           {/* Content */}
-          <div className="relative z-10 text-center py-20 px-8">
+          <div className={`relative z-10 text-center py-20 ${isMobile ? 'px-4' : isTablet ? 'px-6' : 'px-8'}`}>
             <h1 className={`font-bold text-white mb-6 tracking-tight ${isMobile ? 'text-4xl' : isTablet ? 'text-5xl' : 'text-6xl'}`}>
               PLANEACIÓN <span className="text-orange-400">ESTRATÉGICA</span>
             </h1>
@@ -59,7 +59,7 @@ export const Planning: React.FC<PlanningProps> = () => {
         {/* Resumen Financiero */}
         <section className="mb-20">
           <div className="bg-slate-600 border border-slate-500 rounded-2xl overflow-hidden shadow-lg">
-            <div className="bg-slate-500 px-8 py-8">
+            <div className={`bg-slate-500 ${isMobile ? 'px-4' : isTablet ? 'px-6' : 'px-8'} py-8`}>
               <h2 className={`font-light text-white mb-3 ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
                 Resumen Financiero
               </h2>

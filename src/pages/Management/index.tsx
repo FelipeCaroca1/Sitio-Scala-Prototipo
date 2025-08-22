@@ -35,7 +35,7 @@ export const Management: React.FC<ManagementProps> = () => {
           </div>
           
           {/* Content */}
-          <div className="relative z-10 text-center py-20 px-8">
+          <div className={`relative z-10 text-center py-20 ${isMobile ? 'px-4' : isTablet ? 'px-6' : 'px-8'}`}>
             <h1 className={`font-bold text-white mb-6 tracking-tight ${isMobile ? 'text-4xl' : isTablet ? 'text-5xl' : 'text-6xl'}`}>
               GESTIÓN <span className="text-orange-400">OPERATIVA</span>
             </h1>

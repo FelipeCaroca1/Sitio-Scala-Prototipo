@@ -37,30 +37,32 @@ export const AllianceSelector: React.FC<AllianceSelectorProps> = () => {
       <button
         onClick={toggleDropdown}
         className={`
-          flex items-center space-x-3 px-4 py-3 rounded-xl border transition-all duration-200 shadow-sm
+          flex items-center space-x-3 rounded-xl border transition-all duration-200 shadow-sm
           ${selectedAlliance 
             ? 'border-slate-200 bg-slate-50 text-slate-700' 
             : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'
           }
-          ${isMobile ? 'w-full justify-center' : 'min-w-[220px]'}
+          ${isMobile ? 'px-2 py-2 text-xs min-w-[140px]' : 'px-4 py-3 text-sm min-w-[220px]'}
         `}
       >
         {selectedAlliance ? (
           <>
-            <div 
-              className="w-2.5 h-2.5 rounded-full"
-              style={{ backgroundColor: selectedAlliance.color }}
-            />
-            <span className="font-medium text-sm">{selectedAlliance.name}</span>
+                    <div 
+          className={`${isMobile ? 'w-2 h-2' : 'w-2.5 h-2.5'} rounded-full`}
+          style={{ backgroundColor: selectedAlliance.color }}
+        />
+        <span className={`font-medium ${isMobile ? 'text-xs' : 'text-sm'}`}>{selectedAlliance.name}</span>
           </>
         ) : (
           <>
-            <div className="w-2.5 h-2.5 rounded-full bg-slate-400" />
-            <span className="font-medium text-sm">Filtrar por alianza</span>
+                    <div className={`${isMobile ? 'w-2 h-2' : 'w-2.5 h-2.5'} rounded-full bg-slate-400`} />
+        <span className={`font-medium ${isMobile ? 'text-xs' : 'text-sm'}`}>
+          {isMobile ? 'Filtrar' : 'Filtrar por alianza'}
+        </span>
           </>
         )}
         <svg
-          className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          className={`${isMobile ? 'w-3 h-3' : 'w-4 h-4'} transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
