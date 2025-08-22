@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigation } from '../Navigation';
 import { Footer } from '../Footer';
+import { FloatingSearch } from '../FloatingSearch';
 
 /**
  * Props para el componente Layout
@@ -29,6 +30,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       {/* Footer */}
       <Footer />
+
+      {/* Floating Search */}
+      <FloatingSearch />
     </div>
   );
 };

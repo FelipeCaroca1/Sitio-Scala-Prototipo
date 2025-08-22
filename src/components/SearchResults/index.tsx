@@ -24,6 +24,7 @@ interface SearchResultsProps {
   query: string;
   onClose: () => void;
   className?: string;
+  onResultSelect?: () => void;
 }
 
 /**
@@ -65,7 +66,8 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   results,
   query,
   onClose,
-  className = ""
+  className = "",
+  onResultSelect
 }) => {
   const { isMobile } = useResponsive();
 
@@ -121,21 +123,25 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
     return null;
   }
 
+  const isCompact = className?.includes('compact');
+
   return (
     <div 
       className={`
-        absolute top-full left-0 right-0 mt-4 z-50
+        ${isCompact ? 'relative' : 'absolute top-full left-0 right-0 mt-4'} z-50
         bg-slate-700/95 backdrop-blur-sm border border-slate-500 rounded-xl
-        max-h-96 overflow-y-auto
-        ${className}
+        ${isCompact ? 'max-h-64' : 'max-h-96'} overflow-y-auto
+        ${className?.replace('compact', '') || ''}
       `}
       onClick={(e) => e.stopPropagation()}
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-slate-600">
+      <div className={`flex items-center justify-between ${isCompact ? 'p-2' : 'p-4'} border-b border-slate-600`}>
         <div>
-          <h3 className="text-lg font-semibold text-white">Resultados de búsqueda</h3>
-          <p className="text-sm text-slate-300">
+          <h3 className={`font-semibold text-white ${isCompact ? 'text-sm' : 'text-lg'}`}>
+            {isCompact ? 'Resultados' : 'Resultados de búsqueda'}
+          </h3>
+          <p className={`text-slate-300 ${isCompact ? 'text-xs' : 'text-sm'}`}>
             {results.length} resultado{results.length !== 1 ? 's' : ''} para "{query}"
           </p>
         </div>
@@ -154,23 +160,27 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
       </div>
 
       {/* Resultados */}
-      <div className="p-2">
+      <div className={isCompact ? 'p-1' : 'p-2'}>
         {results.map((result) => (
           <div
             key={result.id}
-            className="p-4 hover:bg-slate-600/50 rounded-lg transition-colors cursor-pointer group"
+            className={`${isCompact ? 'p-2' : 'p-4'} hover:bg-slate-600/50 rounded-lg transition-colors cursor-pointer group`}
             onClick={() => {
               if (result.url) {
                 window.open(result.url, '_blank');
               }
+              // Llamar al callback si existe
+              if (onResultSelect) {
+                onResultSelect();
+              }
             }}
           >
-            <div className="flex items-start justify-between mb-2">
+            <div className={`flex items-start justify-between ${isCompact ? 'mb-1' : 'mb-2'}`}>
               <div className="flex-1 min-w-0">
-                <h4 className="font-semibold text-white text-sm group-hover:text-orange-300 transition-colors truncate">
+                <h4 className={`font-semibold text-white group-hover:text-orange-300 transition-colors truncate ${isCompact ? 'text-xs' : 'text-sm'}`}>
                   {result.title}
                 </h4>
-                <p className="text-xs text-slate-300 mt-1 line-clamp-2">
+                <p className={`text-slate-300 mt-1 ${isCompact ? 'text-xs line-clamp-1' : 'text-xs line-clamp-2'}`}>
                   {result.description}
                 </p>
               </div>

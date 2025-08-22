@@ -37,30 +37,28 @@ export const Navigation: React.FC<NavigationProps> = () => {
   return (
     <nav className="bg-slate-800/95 backdrop-blur-sm shadow-sm border-b border-slate-700 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                 <div className="flex justify-between items-center h-20">
-           {/* Logo - Izquierda */}
-           <div className="flex-shrink-0">
-             <Link to="/" className="flex items-center space-x-3">
-               <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
-                 <span className="text-white font-bold text-xl">S</span>
-               </div>
-               <div className="flex flex-col">
-                 <span className="text-2xl font-light text-white tracking-wide">
-                   scala
-                 </span>
-                 <span className="text-xs font-medium text-orange-400 tracking-widest -mt-1">
-                   LEARNING
-                 </span>
-               </div>
-             </Link>
-           </div>
-
-                       {/* Selector de Alianzas - Solo visible en desktop */}
-            {!isMobile && (
-              <div className="flex-shrink-0 mr-6">
-                <AllianceSelector />
+                         <div className="flex justify-between items-center h-20">
+          {/* Logo - Izquierda */}
+          <div className="flex-shrink-0">
+            <Link to="/" className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-xl">S</span>
               </div>
-            )}
+              <div className="flex flex-col">
+                <span className="text-2xl font-light text-white tracking-wide">
+                  scala
+                </span>
+                <span className="text-xs font-medium text-orange-400 tracking-widest -mt-1">
+                  LEARNING
+                </span>
+              </div>
+            </Link>
+          </div>
+
+          {/* Selector de Alianzas - Siempre visible */}
+          <div className="flex-shrink-0 mr-4">
+            <AllianceSelector />
+          </div>
 
             {/* Desktop Navigation - Derecha */}
             {!isMobile && (
@@ -106,16 +104,11 @@ export const Navigation: React.FC<NavigationProps> = () => {
           )}
         </div>
 
-        {/* Mobile Navigation Menu */}
+                {/* Mobile Navigation Menu */}
         {isMobile && isMenuOpen && (
           <div className="md:hidden">
-            {/* Selector de Alianzas en móvil */}
-            <div className="px-4 py-3 border-b border-gray-200">
-              <AllianceSelector />
-            </div>
-            
             {/* Menú de navegación */}
-                                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-700 rounded-lg mt-2">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-700 rounded-lg mt-2">
                       {navItems.map((item) => (
                         <Link
                           key={item.path}

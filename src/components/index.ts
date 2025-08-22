@@ -25,3 +25,6 @@ export { SearchResults } from './SearchResults';
 
 // SmartSearch
 export { SmartSearch } from './SmartSearch';
+
+// FloatingSearch
+export { FloatingSearch } from './FloatingSearch';
