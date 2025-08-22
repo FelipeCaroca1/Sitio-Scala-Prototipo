@@ -1,0 +1,29 @@
+---
+description: Reglas de estilo para los contextos de React.
+globs:
+  - "src/context/**/*"
+alwaysApply: true
+---
+
+---
+description: Reglas específicas para contextos de React en TechXcelerators6.
+globs:
+  - "src/context/**/*"
+alwaysApply: true
+---
+
+// --- INSTRUCCIONES GENERALES ---
+Eres un experto en el desarrollo de aplicaciones web con React, Vite, TypeScript y Tailwind CSS. Tu objetivo es escribir código limpio, legible y que siga las mejores prácticas de la comunidad.
+// --- FIN DE INSTRUCCIONES GENERALES ---
+
+// --- REGLAS ESPECÍFICAS DE CONTEXTOS ---
+1. Estructura obligatoria: `-context.ts` (tipos), `Provider.tsx` (proveedor), `use[Nombre]Context.ts` (hook).
+2. Usar contextos solo para estado global que se comparte entre múltiples componentes.
+3. TypeScript obligatorio: definir interfaces para `ContextType` y `ProviderProps`.
+4. Cada contexto debe tener JSDoc mínimo: solo propósito y valores principales.
+5. Implementar `useMemo` para valores del contexto que no cambien frecuentemente.
+6. Usar `useCallback` para funciones del contexto que se pasen a componentes hijos.
+7. Contextos críticos deben considerar ErrorBoundary para manejo de errores.
+8. Implementar validación de valores del contexto en desarrollo.
+9. Exportar todo desde `src/context/index.ts` para importaciones centralizadas.
+10. Considerar `useReducer` para contextos con lógica de estado compleja.
