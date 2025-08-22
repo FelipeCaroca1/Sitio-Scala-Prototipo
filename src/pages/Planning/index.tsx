@@ -128,42 +128,32 @@ export const Planning: React.FC<PlanningProps> = () => {
                 <div className="mb-6 p-4 bg-slate-500 rounded-xl border border-slate-400">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <span className="text-sm font-medium text-orange-400">Año Fiscal:</span>
-                      <p className="text-sm text-white">{doc.fiscalYear}</p>
+                      <span className="text-sm font-medium text-orange-400">Período de Planificación:</span>
+                      <p className="text-sm text-white">{doc.planningPeriod}</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-orange-400">Categoría:</span>
-                      <p className="text-sm text-white">{doc.budgetCategory}</p>
+                      <span className="text-sm font-medium text-orange-400">Timeline:</span>
+                      <p className="text-sm text-white">{doc.timeline}</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-orange-400">Estado:</span>
-                      <span className={`text-xs px-2 py-1 rounded-full ${
-                        doc.approvalStatus === 'approved' ? 'bg-green-900/30 text-green-200' :
-                        doc.approvalStatus === 'pending' ? 'bg-yellow-900/30 text-yellow-200' :
-                        doc.approvalStatus === 'under-review' ? 'bg-blue-900/30 text-blue-200' :
-                        'bg-red-900/30 text-red-200'
-                      }`}>
-                        {doc.approvalStatus === 'approved' ? 'Aprobado' :
-                         doc.approvalStatus === 'pending' ? 'Pendiente' :
-                         doc.approvalStatus === 'under-review' ? 'En Revisión' :
-                         'Rechazado'}
-                      </span>
+                      <span className="text-sm font-medium text-orange-400">Objetivos Estratégicos:</span>
+                      <p className="text-sm text-white">{doc.strategicObjectives.length} objetivos</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-orange-400">Responsable:</span>
-                      <p className="text-sm text-white">{doc.responsiblePerson}</p>
+                      <span className="text-sm font-medium text-orange-400">Iniciativas Clave:</span>
+                      <p className="text-sm text-white">{doc.keyInitiatives.length} iniciativas</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Milestones */}
+                {/* Métricas de Éxito */}
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-green-400 mb-2">Hitos Principales:</h4>
+                  <h4 className="text-sm font-semibold text-green-400 mb-2">Métricas de Éxito:</h4>
                   <ul className="space-y-1">
-                    {doc.milestones.slice(0, 3).map((milestone, index) => (
+                    {doc.successMetrics.slice(0, 3).map((metric, index) => (
                       <li key={index} className="text-xs text-slate-200 flex items-start">
                         <span className="text-green-400 mr-2">•</span>
-                        {milestone}
+                        {metric}
                       </li>
                     ))}
                   </ul>

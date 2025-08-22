@@ -1,3 +1,4 @@
+
 import { useAllianceContext } from '../../context/useAllianceContext';
 import {
   getDocumentsByAlliance,
@@ -6,7 +7,8 @@ import {
   getStatsByAlliance,
   getGovernanceDataByAlliance,
   getPlanningDataByAlliance,
-  getManagementDataByAlliance
+  getManagementDataByAlliance,
+  getInitiativesDataByAlliance
 } from '../../mocks';
 
 /**
@@ -16,15 +18,12 @@ import {
 export const useFilteredData = () => {
   const { selectedAlliance } = useAllianceContext();
 
-  // Debug temporal
-  console.log('useFilteredData - selectedAlliance:', selectedAlliance);
-
   // Función para filtrar documentos generales
   const filterDocuments = (data: any[]) => {
     if (!selectedAlliance) {
       return data; // Si no hay alianza seleccionada, mostrar todos
     }
-    return data.filter(item => item.alliance === selectedAlliance.name);
+    return data.filter(item => item.alliance === selectedAlliance.code);
   };
 
   // Función para filtrar contactos
@@ -32,7 +31,7 @@ export const useFilteredData = () => {
     if (!selectedAlliance) {
       return data; // Si no hay alianza seleccionada, mostrar todos
     }
-    return data.filter(item => item.alliance === selectedAlliance.name);
+    return data.filter(item => item.alliance === selectedAlliance.code);
   };
 
   // Función para filtrar proyectos
@@ -40,54 +39,54 @@ export const useFilteredData = () => {
     if (!selectedAlliance) {
       return data; // Si no hay alianza seleccionada, mostrar todos
     }
-    return data.filter(item => item.alliance === selectedAlliance.name);
+    return data.filter(item => item.alliance === selectedAlliance.code);
   };
 
   // Función para obtener documentos de alianza específica
   const getDocumentsByAllianceFiltered = () => {
-    const result = getDocumentsByAlliance(selectedAlliance?.name || null);
-    console.log('getDocumentsByAllianceFiltered - result:', result);
+    const result = getDocumentsByAlliance(selectedAlliance?.code || null);
     return result;
   };
 
   // Función para obtener contactos de alianza específica
   const getContactsByAllianceFiltered = () => {
-    const result = getContactsByAlliance(selectedAlliance?.name || null);
-    console.log('getContactsByAllianceFiltered - result:', result);
+    const result = getContactsByAlliance(selectedAlliance?.code || null);
     return result;
   };
 
   // Función para obtener proyectos de alianza específica
   const getProjectsByAllianceFiltered = () => {
-    const result = getProjectsByAlliance(selectedAlliance?.name || null);
-    console.log('getProjectsByAllianceFiltered - result:', result);
+    const result = getProjectsByAlliance(selectedAlliance?.code || null);
     return result;
   };
 
   // Función para obtener datos de gobernanza filtrados
   const getGovernanceDataFiltered = () => {
-    const result = getGovernanceDataByAlliance(selectedAlliance?.name || null);
-    console.log('getGovernanceDataFiltered - result:', result);
+    const result = getGovernanceDataByAlliance(selectedAlliance?.code || null);
     return result;
   };
 
   // Función para obtener datos de planeación filtrados
   const getPlanningDataFiltered = () => {
-    const result = getPlanningDataByAlliance(selectedAlliance?.name || null);
-    console.log('getPlanningDataFiltered - result:', result);
+    const result = getPlanningDataByAlliance(selectedAlliance?.code || null);
     return result;
   };
 
   // Función para obtener datos de gestión filtrados
   const getManagementDataFiltered = () => {
-    const result = getManagementDataByAlliance(selectedAlliance?.name || null);
-    console.log('getManagementDataFiltered - result:', result);
+    const result = getManagementDataByAlliance(selectedAlliance?.code || null);
+    return result;
+  };
+
+  // Función para obtener datos de iniciativas filtrados
+  const getInitiativesDataFiltered = () => {
+    const result = getInitiativesDataByAlliance(selectedAlliance?.code || null);
     return result;
   };
 
   // Función para obtener estadísticas filtradas
   const getStatsFiltered = () => {
-    return getStatsByAlliance(selectedAlliance?.name || null);
+    return getStatsByAlliance(selectedAlliance?.code || null);
   };
 
   // Indicador de filtro actual
@@ -111,6 +110,7 @@ export const useFilteredData = () => {
     getGovernanceDataFiltered,
     getPlanningDataFiltered,
     getManagementDataFiltered,
+    getInitiativesDataFiltered,
     
     // Estadísticas
     getStatsFiltered,

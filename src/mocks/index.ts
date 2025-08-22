@@ -20,5 +20,6 @@ export {
 export {
   getGovernanceDataByAlliance,
   getPlanningDataByAlliance,
-  getManagementDataByAlliance
+  getManagementDataByAlliance,
+  getInitiativesDataByAlliance
 } from './moduleData';

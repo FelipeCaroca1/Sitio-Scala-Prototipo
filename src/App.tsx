@@ -7,8 +7,7 @@ import { OurAlliance } from './pages/OurAlliance';
 import { Governance } from './pages/Governance';
 import { Planning } from './pages/Planning';
 import { Management } from './pages/Management';
-import { About } from './pages/About';
-
+import { Initiatives } from './pages/Initiatives';
 
 /**
  * Componente principal de la aplicación
@@ -29,9 +28,19 @@ const App: React.FC = () => {
                 <Route path="/gobernanza" element={<Governance />} />
                 <Route path="/planeacion" element={<Planning />} />
                 <Route path="/gestion" element={<Management />} />
-                <Route path="/iniciativas" element={<About />} />
-                <Route path="/chat-ia" element={<About />} />
-                <Route path="/galeria" element={<About />} />
+                <Route path="/iniciativas" element={<Initiatives />} />
+                <Route path="/chat-ia" element={<div className="min-h-screen bg-slate-700 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <h1 className="text-4xl font-bold mb-4">CHAT IA</h1>
+                    <p className="text-xl text-slate-300">Próximamente - Agente IA para orientar usuarios</p>
+                  </div>
+                </div>} />
+                <Route path="/galeria" element={<div className="min-h-screen bg-slate-700 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <h1 className="text-4xl font-bold mb-4">GALERÍA DE FOTOS E HITOS</h1>
+                    <p className="text-xl text-slate-300">Próximamente - Galería de fotos e hitos de la alianza</p>
+                  </div>
+                </div>} />
                 <Route
                   path="*"
                   element={

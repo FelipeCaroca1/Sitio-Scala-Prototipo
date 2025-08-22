@@ -77,57 +77,33 @@ export const Management: React.FC<ManagementProps> = () => {
                 <div className="mb-6 p-4 bg-slate-500 rounded-xl border border-slate-400">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <span className="text-sm font-medium text-orange-400">Estado:</span>
-                      <span className={`text-xs px-2 py-1 rounded-full ml-2 ${
-                        doc.status === 'active' ? 'bg-green-900/30 text-green-200' :
-                        doc.status === 'completed' ? 'bg-blue-900/30 text-blue-200' :
-                        doc.status === 'on-hold' ? 'bg-yellow-900/30 text-yellow-200' :
-                        'bg-red-900/30 text-red-200'
-                      }`}>
-                        {doc.status === 'active' ? 'Activo' :
-                         doc.status === 'completed' ? 'Completado' :
-                         doc.status === 'on-hold' ? 'En Pausa' :
-                         'Cancelado'}
-                      </span>
+                      <span className="text-sm font-medium text-orange-400">Tipo de Proceso:</span>
+                      <div className="mt-1">
+                        <span className="inline-block text-xs px-3 py-1 rounded-full bg-blue-900/30 text-blue-200 max-w-full truncate" title={doc.processType}>
+                          {doc.processType}
+                        </span>
+                      </div>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-orange-400">Prioridad:</span>
-                      <span className={`text-xs px-2 py-1 rounded-full ml-2 ${
-                        doc.priority === 'critical' ? 'bg-red-900/30 text-red-200' :
-                        doc.priority === 'high' ? 'bg-orange-900/30 text-orange-200' :
-                        doc.priority === 'medium' ? 'bg-yellow-900/30 text-yellow-200' :
-                        'bg-green-900/30 text-green-200'
-                      }`}>
-                        {doc.priority === 'critical' ? 'Crítica' :
-                         doc.priority === 'high' ? 'Alta' :
-                         doc.priority === 'medium' ? 'Media' :
-                         'Baja'}
-                      </span>
+                      <span className="text-sm font-medium text-orange-400">Departamento:</span>
+                      <div className="mt-1">
+                        <span className="inline-block text-xs px-3 py-1 rounded-full bg-green-900/30 text-green-200 max-w-full truncate" title={doc.responsibleDepartment}>
+                          {doc.responsibleDepartment}
+                        </span>
+                      </div>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-orange-400">Asignado a:</span>
-                      <p className="text-sm text-white">{doc.assignedTo}</p>
+                      <span className="text-sm font-medium text-orange-400">Frecuencia de Revisión:</span>
+                      <p className="text-sm text-white mt-1">{doc.reviewFrequency}</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-orange-400">Progreso:</span>
-                      <p className="text-sm text-white">{doc.progress}%</p>
+                      <span className="text-sm font-medium text-orange-400">Requisitos de Cumplimiento:</span>
+                      <p className="text-sm text-white mt-1">{doc.complianceRequirements.length} requisitos</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Barra de progreso */}
-                <div className="mb-6">
-                  <div className="flex justify-between text-sm mb-2">
-                    <span className="text-slate-200">Progreso del proyecto</span>
-                    <span className="text-orange-400 font-semibold">{doc.progress}%</span>
-                  </div>
-                  <div className="w-full bg-slate-500 rounded-full h-2">
-                    <div 
-                      className="bg-orange-600 h-2 rounded-full transition-all duration-300" 
-                      style={{ width: `${doc.progress}%` }}
-                    ></div>
-                  </div>
-                </div>
+
                 
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-slate-300 font-medium">
