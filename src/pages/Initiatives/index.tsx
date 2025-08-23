@@ -17,7 +17,7 @@ interface InitiativesProps {}
  * @returns {React.FC} Componente de página Initiatives
  */
 export const Initiatives: React.FC<InitiativesProps> = () => {
-  const { isMobile, isTablet } = useResponsive();
+  const { isMobile, isTablet, isVerySmallMobile } = useResponsive();
   const { getInitiativesDataFiltered, getFilterIndicator } = useFilteredData();
 
   const filteredInitiatives = getInitiativesDataFiltered();
@@ -83,11 +83,11 @@ export const Initiatives: React.FC<InitiativesProps> = () => {
           </div>
           
           {/* Content */}
-          <div className={`relative z-10 text-center py-20 ${isMobile ? 'px-4' : isTablet ? 'px-6' : 'px-8'}`}>
-            <h1 className={`font-bold text-white mb-6 tracking-tight ${isMobile ? 'text-4xl' : isTablet ? 'text-5xl' : 'text-6xl'}`}>
+          <div className={`relative z-10 text-center py-20 ${isVerySmallMobile ? 'px-2' : isMobile ? 'px-4' : isTablet ? 'px-6' : 'px-8'}`}>
+            <h1 className={`font-bold text-white mb-6 tracking-tight ${isVerySmallMobile ? 'text-3xl' : isMobile ? 'text-4xl' : isTablet ? 'text-5xl' : 'text-6xl'}`}>
               INICIATIVAS <span className="text-orange-400">ESTRATÉGICAS</span>
             </h1>
-            <p className={`text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 ${isMobile ? 'text-lg' : 'text-xl'}`}>
+            <p className={`text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 ${isVerySmallMobile ? 'text-base' : isMobile ? 'text-lg' : 'text-xl'}`}>
               Planes de acción con las alianzas internas para el desarrollo y crecimiento institucional
             </p>
             
@@ -107,17 +107,17 @@ export const Initiatives: React.FC<InitiativesProps> = () => {
         {/* Macroplan */}
         <section className="mb-20">
           <div className="bg-slate-600 border border-slate-500 rounded-2xl overflow-hidden shadow-lg">
-            <div className={`bg-slate-500 ${isMobile ? 'px-4' : isTablet ? 'px-6' : 'px-8'} py-8`}>
-              <h2 className={`font-light text-white mb-3 ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+            <div className={`bg-slate-500 ${isVerySmallMobile ? 'px-3' : isMobile ? 'px-4' : isTablet ? 'px-6' : 'px-8'} py-8`}>
+              <h2 className={`font-light text-white mb-3 ${isVerySmallMobile ? 'text-xl' : isMobile ? 'text-2xl' : 'text-3xl'}`}>
                 Macroplan Estratégico
               </h2>
-              <p className={`text-slate-200 leading-relaxed ${isMobile ? 'text-sm' : 'text-base'}`}>
+              <p className={`text-slate-200 leading-relaxed ${isVerySmallMobile ? 'text-xs' : isMobile ? 'text-sm' : 'text-base'}`}>
                 Visión general y objetivos estratégicos de las iniciativas por alianza
               </p>
             </div>
             
-            <div className="p-8">
-              <div className={`grid gap-8 ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'}`}>
+            <div className={`${isVerySmallMobile ? 'p-4' : 'p-8'}`}>
+              <div className={`grid ${isVerySmallMobile ? 'gap-4' : isMobile ? 'gap-6' : 'gap-8'} ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'}`}>
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,7 +157,7 @@ export const Initiatives: React.FC<InitiativesProps> = () => {
 
         {/* Planes de Acción */}
         <section className="mb-20">
-          <h2 className={`font-bold text-white mb-8 text-center ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+          <h2 className={`font-bold text-white mb-8 text-center ${isVerySmallMobile ? 'text-xl' : isMobile ? 'text-2xl' : 'text-3xl'}`}>
             Planes de Acción
           </h2>
           
@@ -168,13 +168,13 @@ export const Initiatives: React.FC<InitiativesProps> = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">No hay iniciativas disponibles</h3>
-              <p className="text-slate-300">Selecciona una alianza específica para ver las iniciativas disponibles</p>
+              <h3 className={`font-semibold text-white mb-2 ${isVerySmallMobile ? 'text-lg' : 'text-xl'}`}>No hay iniciativas disponibles</h3>
+              <p className={`text-slate-300 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Selecciona una alianza específica para ver las iniciativas disponibles</p>
             </div>
           ) : (
-            <div className={`grid gap-8 ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'}`}>
+            <div className={`grid ${isVerySmallMobile ? 'gap-4' : isMobile ? 'gap-6' : 'gap-8'} ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'}`}>
               {filteredInitiatives.map((initiative) => (
-                <div key={initiative.id} className="bg-slate-600 rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-slate-500 group hover:-translate-y-1">
+                <div key={initiative.id} className={`bg-slate-600 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-500 group hover:-translate-y-1 ${isVerySmallMobile ? 'p-4' : 'p-8'}`}>
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <svg className="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -273,65 +273,65 @@ export const Initiatives: React.FC<InitiativesProps> = () => {
 
         {/* Operativa 2024 */}
         <section className="mb-20">
-          <h2 className={`font-bold text-white mb-8 text-center ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+          <h2 className={`font-bold text-white mb-8 text-center ${isVerySmallMobile ? 'text-xl' : isMobile ? 'text-2xl' : 'text-3xl'}`}>
             Operativa 2024
           </h2>
           
-          <div className="bg-slate-600 rounded-2xl shadow-lg p-8 border border-slate-500">
-            <div className="grid gap-6">
-              <div className="flex items-center p-6 bg-slate-500 rounded-xl border border-slate-400">
-                <div className="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center text-white font-semibold mr-6">
-                  <span className="text-lg">Q1</span>
+          <div className={`bg-slate-600 rounded-2xl shadow-lg border border-slate-500 ${isVerySmallMobile ? 'p-4' : 'p-8'}`}>
+            <div className={`grid ${isVerySmallMobile ? 'gap-4' : 'gap-6'}`}>
+              <div className={`flex items-center ${isVerySmallMobile ? 'p-3' : 'p-6'} bg-slate-500 rounded-xl border border-slate-400`}>
+                <div className={`${isVerySmallMobile ? 'w-12 h-12' : 'w-16 h-16'} bg-orange-500 rounded-xl flex items-center justify-center text-white font-semibold ${isVerySmallMobile ? 'mr-3' : 'mr-6'}`}>
+                  <span className={`${isVerySmallMobile ? 'text-sm' : 'text-lg'}`}>Q1</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-white text-lg">Lanzamiento de Iniciativas</h3>
-                  <p className="text-slate-200 text-base">Definición y aprobación de proyectos estratégicos</p>
+                  <h3 className={`font-semibold text-white ${isVerySmallMobile ? 'text-base' : 'text-lg'}`}>Lanzamiento de Iniciativas</h3>
+                  <p className={`text-slate-200 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Definición y aprobación de proyectos estratégicos</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-base font-medium text-orange-400">Enero - Marzo</p>
-                  <p className="text-sm text-slate-300">Completado</p>
+                  <p className={`font-medium text-orange-400 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Enero - Marzo</p>
+                  <p className={`text-slate-300 ${isVerySmallMobile ? 'text-xs' : 'text-sm'}`}>Completado</p>
                 </div>
               </div>
               
-              <div className="flex items-center p-6 bg-slate-500 rounded-xl border border-slate-400">
-                <div className="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center text-white font-semibold mr-6">
-                  <span className="text-lg">Q2</span>
+              <div className={`flex items-center ${isVerySmallMobile ? 'p-3' : 'p-6'} bg-slate-500 rounded-xl border border-slate-400`}>
+                <div className={`${isVerySmallMobile ? 'w-12 h-12' : 'w-16 h-16'} bg-blue-500 rounded-xl flex items-center justify-center text-white font-semibold ${isVerySmallMobile ? 'mr-3' : 'mr-6'}`}>
+                  <span className={`${isVerySmallMobile ? 'text-sm' : 'text-lg'}`}>Q2</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-white text-lg">Implementación</h3>
-                  <p className="text-slate-200 text-base">Ejecución de iniciativas aprobadas</p>
+                  <h3 className={`font-semibold text-white ${isVerySmallMobile ? 'text-base' : 'text-lg'}`}>Implementación</h3>
+                  <p className={`text-slate-200 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Ejecución de iniciativas aprobadas</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-base font-medium text-blue-400">Abril - Junio</p>
-                  <p className="text-sm text-slate-300">En progreso</p>
+                  <p className={`font-medium text-blue-400 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Abril - Junio</p>
+                  <p className={`text-slate-300 ${isVerySmallMobile ? 'text-xs' : 'text-sm'}`}>En progreso</p>
                 </div>
               </div>
               
-              <div className="flex items-center p-6 bg-slate-500 rounded-xl border border-slate-400">
-                <div className="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center text-white font-semibold mr-6">
-                  <span className="text-lg">Q3</span>
+              <div className={`flex items-center ${isVerySmallMobile ? 'p-3' : 'p-6'} bg-slate-500 rounded-xl border border-slate-400`}>
+                <div className={`${isVerySmallMobile ? 'w-12 h-12' : 'w-16 h-16'} bg-green-500 rounded-xl flex items-center justify-center text-white font-semibold ${isVerySmallMobile ? 'mr-3' : 'mr-6'}`}>
+                  <span className={`${isVerySmallMobile ? 'text-sm' : 'text-lg'}`}>Q3</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-white text-lg">Evaluación</h3>
-                  <p className="text-slate-200 text-base">Revisión de resultados y ajustes</p>
+                  <h3 className={`font-semibold text-white ${isVerySmallMobile ? 'text-base' : 'text-lg'}`}>Evaluación</h3>
+                  <p className={`text-slate-200 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Revisión de resultados y ajustes</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-base font-medium text-green-400">Julio - Septiembre</p>
-                  <p className="text-sm text-slate-300">Pendiente</p>
+                  <p className={`font-medium text-green-400 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Julio - Septiembre</p>
+                  <p className={`text-slate-300 ${isVerySmallMobile ? 'text-xs' : 'text-sm'}`}>Pendiente</p>
                 </div>
               </div>
               
-              <div className="flex items-center p-6 bg-slate-500 rounded-xl border border-slate-400">
-                <div className="w-16 h-16 bg-purple-500 rounded-xl flex items-center justify-center text-white font-semibold mr-6">
-                  <span className="text-lg">Q4</span>
+              <div className={`flex items-center ${isVerySmallMobile ? 'p-3' : 'p-6'} bg-slate-500 rounded-xl border border-slate-400`}>
+                <div className={`${isVerySmallMobile ? 'w-12 h-12' : 'w-16 h-16'} bg-purple-500 rounded-xl flex items-center justify-center text-white font-semibold ${isVerySmallMobile ? 'mr-3' : 'mr-6'}`}>
+                  <span className={`${isVerySmallMobile ? 'text-sm' : 'text-lg'}`}>Q4</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-white text-lg">Planificación 2025</h3>
-                  <p className="text-slate-200 text-base">Definición de nuevas iniciativas</p>
+                  <h3 className={`font-semibold text-white ${isVerySmallMobile ? 'text-base' : 'text-lg'}`}>Planificación 2025</h3>
+                  <p className={`text-slate-200 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Definición de nuevas iniciativas</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-base font-medium text-purple-400">Octubre - Diciembre</p>
-                  <p className="text-sm text-slate-300">Pendiente</p>
+                  <p className={`font-medium text-purple-400 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Octubre - Diciembre</p>
+                  <p className={`text-slate-300 ${isVerySmallMobile ? 'text-xs' : 'text-sm'}`}>Pendiente</p>
                 </div>
               </div>
             </div>
@@ -340,11 +340,11 @@ export const Initiatives: React.FC<InitiativesProps> = () => {
 
         {/* CTA */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-8 text-white">
-            <h2 className={`font-bold mb-4 ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+          <div className={`bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl text-white ${isVerySmallMobile ? 'p-6' : 'p-8'}`}>
+            <h2 className={`font-bold mb-4 ${isVerySmallMobile ? 'text-xl' : isMobile ? 'text-2xl' : 'text-3xl'}`}>
               ¿Tienes una nueva iniciativa?
             </h2>
-            <p className={`mb-6 opacity-90 ${isMobile ? 'text-base' : 'text-lg'}`}>
+            <p className={`mb-6 opacity-90 ${isVerySmallMobile ? 'text-sm' : isMobile ? 'text-base' : 'text-lg'}`}>
               Contacta con el equipo estratégico para evaluar y aprobar nuevas iniciativas
             </p>
             <button className="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">

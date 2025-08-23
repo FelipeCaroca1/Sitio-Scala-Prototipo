@@ -45,6 +45,7 @@ export const useResponsive = (): ResponsiveHookReturn => {
     isMobile: xs || sm,
     isTablet: md,
     isDesktop: lg || xl || xxl,
+    isVerySmallMobile: width < 400, // iPhone SE, Galaxy Fold, etc.
     width,
     height,
   };

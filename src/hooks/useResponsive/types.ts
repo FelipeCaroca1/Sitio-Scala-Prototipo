@@ -23,6 +23,8 @@ export interface ResponsiveHookReturn extends ResponsiveBreakpoints {
   isTablet: boolean;
   /** Indica si es desktop (lg o superior) */
   isDesktop: boolean;
+  /** Indica si es un dispositivo móvil muy estrecho (iPhone SE, Galaxy Fold, etc.) */
+  isVerySmallMobile: boolean;
   /** Ancho actual de la ventana */
   width: number;
   /** Alto actual de la ventana */

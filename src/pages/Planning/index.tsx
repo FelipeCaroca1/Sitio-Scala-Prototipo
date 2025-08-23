@@ -17,7 +17,7 @@ interface PlanningProps {}
  * @returns {React.FC} Componente de página Planning
  */
 export const Planning: React.FC<PlanningProps> = () => {
-  const { isMobile, isTablet } = useResponsive();
+  const { isMobile, isTablet, isVerySmallMobile } = useResponsive();
   const { getPlanningDataFiltered, getFilterIndicator } = useFilteredData();
 
   const filteredDocuments = getPlanningDataFiltered();
@@ -35,11 +35,11 @@ export const Planning: React.FC<PlanningProps> = () => {
           </div>
           
           {/* Content */}
-          <div className={`relative z-10 text-center py-20 ${isMobile ? 'px-4' : isTablet ? 'px-6' : 'px-8'}`}>
-            <h1 className={`font-bold text-white mb-6 tracking-tight ${isMobile ? 'text-4xl' : isTablet ? 'text-5xl' : 'text-6xl'}`}>
+          <div className={`relative z-10 text-center py-20 ${isVerySmallMobile ? 'px-2' : isMobile ? 'px-4' : isTablet ? 'px-6' : 'px-8'}`}>
+            <h1 className={`font-bold text-white mb-6 tracking-tight ${isVerySmallMobile ? 'text-3xl' : isMobile ? 'text-4xl' : isTablet ? 'text-5xl' : 'text-6xl'}`}>
               PLANEACIÓN <span className="text-orange-400">ESTRATÉGICA</span>
             </h1>
-            <p className={`text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 ${isMobile ? 'text-lg' : 'text-xl'}`}>
+            <p className={`text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 ${isVerySmallMobile ? 'text-base' : isMobile ? 'text-lg' : 'text-xl'}`}>
               Planificación financiera, presupuestos y estrategias de desarrollo institucional
             </p>
             
@@ -59,17 +59,17 @@ export const Planning: React.FC<PlanningProps> = () => {
         {/* Resumen Financiero */}
         <section className="mb-20">
           <div className="bg-slate-600 border border-slate-500 rounded-2xl overflow-hidden shadow-lg">
-            <div className={`bg-slate-500 ${isMobile ? 'px-4' : isTablet ? 'px-6' : 'px-8'} py-8`}>
-              <h2 className={`font-light text-white mb-3 ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+            <div className={`bg-slate-500 ${isVerySmallMobile ? 'px-3' : isMobile ? 'px-4' : isTablet ? 'px-6' : 'px-8'} py-8`}>
+              <h2 className={`font-light text-white mb-3 ${isVerySmallMobile ? 'text-xl' : isMobile ? 'text-2xl' : 'text-3xl'}`}>
                 Resumen Financiero
               </h2>
-              <p className={`text-slate-200 leading-relaxed ${isMobile ? 'text-sm' : 'text-base'}`}>
+              <p className={`text-slate-200 leading-relaxed ${isVerySmallMobile ? 'text-xs' : isMobile ? 'text-sm' : 'text-base'}`}>
                 Estado actual de presupuestos y planificación financiera por alianza
               </p>
             </div>
             
-            <div className="p-8">
-              <div className={`grid gap-8 ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'}`}>
+            <div className={`${isVerySmallMobile ? 'p-4' : 'p-8'}`}>
+              <div className={`grid ${isVerySmallMobile ? 'gap-4' : isMobile ? 'gap-6' : 'gap-8'} ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'}`}>
                 <div className="text-center group">
                   <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <svg className="w-10 h-10 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,13 +109,13 @@ export const Planning: React.FC<PlanningProps> = () => {
 
         {/* Documentos de Planeación */}
         <section className="mb-20">
-          <h2 className={`font-bold text-white mb-8 text-center ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+          <h2 className={`font-bold text-white mb-8 text-center ${isVerySmallMobile ? 'text-xl' : isMobile ? 'text-2xl' : 'text-3xl'}`}>
             Documentos de Planeación
           </h2>
           
-          <div className={`grid gap-8 ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'}`}>
+          <div className={`grid ${isVerySmallMobile ? 'gap-4' : isMobile ? 'gap-6' : 'gap-8'} ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'}`}>
             {filteredDocuments.map((doc) => (
-              <div key={doc.id} className="bg-slate-600 rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-slate-500 group hover:-translate-y-1">
+              <div key={doc.id} className={`bg-slate-600 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-500 group hover:-translate-y-1 ${isVerySmallMobile ? 'p-4' : 'p-8'}`}>
                 <div className="flex items-center justify-between mb-6">
                   <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -188,51 +188,51 @@ export const Planning: React.FC<PlanningProps> = () => {
 
         {/* Cronograma de Proyectos */}
         <section className="mb-20">
-          <h2 className={`font-bold text-white mb-8 text-center ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+          <h2 className={`font-bold text-white mb-8 text-center ${isVerySmallMobile ? 'text-xl' : isMobile ? 'text-2xl' : 'text-3xl'}`}>
             Cronograma de Proyectos
           </h2>
           
-          <div className="bg-slate-600 rounded-2xl shadow-lg p-8 border border-slate-500">
-            <div className="grid gap-6">
-              <div className="flex items-center p-6 bg-slate-500 rounded-xl border border-slate-400">
-                <div className="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center text-white font-semibold mr-6">
-                  <span className="text-lg">Q1</span>
+          <div className={`bg-slate-600 rounded-2xl shadow-lg border border-slate-500 ${isVerySmallMobile ? 'p-4' : 'p-8'}`}>
+            <div className={`grid ${isVerySmallMobile ? 'gap-4' : 'gap-6'}`}>
+              <div className={`flex items-center ${isVerySmallMobile ? 'p-3' : 'p-6'} bg-slate-500 rounded-xl border border-slate-400`}>
+                <div className={`${isVerySmallMobile ? 'w-12 h-12' : 'w-16 h-16'} bg-orange-500 rounded-xl flex items-center justify-center text-white font-semibold ${isVerySmallMobile ? 'mr-3' : 'mr-6'}`}>
+                  <span className={`${isVerySmallMobile ? 'text-sm' : 'text-lg'}`}>Q1</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-white text-lg">Planeación Estratégica</h3>
-                  <p className="text-slate-200 text-base">Definición de objetivos y presupuestos 2024</p>
+                  <h3 className={`font-semibold text-white ${isVerySmallMobile ? 'text-base' : 'text-lg'}`}>Planeación Estratégica</h3>
+                  <p className={`text-slate-200 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Definición de objetivos y presupuestos 2024</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-base font-medium text-orange-400">Enero - Marzo</p>
-                  <p className="text-sm text-slate-300">En progreso</p>
+                  <p className={`font-medium text-orange-400 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Enero - Marzo</p>
+                  <p className={`text-slate-300 ${isVerySmallMobile ? 'text-xs' : 'text-sm'}`}>En progreso</p>
                 </div>
               </div>
               
-              <div className="flex items-center p-6 bg-slate-500 rounded-xl border border-slate-400">
-                <div className="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center text-white font-semibold mr-6">
-                  <span className="text-lg">Q2</span>
+              <div className={`flex items-center ${isVerySmallMobile ? 'p-3' : 'p-6'} bg-slate-500 rounded-xl border border-slate-400`}>
+                <div className={`${isVerySmallMobile ? 'w-12 h-12' : 'w-16 h-16'} bg-blue-500 rounded-xl flex items-center justify-center text-white font-semibold ${isVerySmallMobile ? 'mr-3' : 'mr-6'}`}>
+                  <span className={`${isVerySmallMobile ? 'text-sm' : 'text-lg'}`}>Q2</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-white text-lg">Implementación</h3>
-                  <p className="text-slate-200 text-base">Ejecución de planes aprobados</p>
+                  <h3 className={`font-semibold text-white ${isVerySmallMobile ? 'text-base' : 'text-lg'}`}>Implementación</h3>
+                  <p className={`text-slate-200 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Ejecución de planes aprobados</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-base font-medium text-blue-400">Abril - Junio</p>
-                  <p className="text-sm text-slate-300">Pendiente</p>
+                  <p className={`font-medium text-blue-400 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Abril - Junio</p>
+                  <p className={`text-slate-300 ${isVerySmallMobile ? 'text-xs' : 'text-sm'}`}>Pendiente</p>
                 </div>
               </div>
               
-              <div className="flex items-center p-6 bg-slate-500 rounded-xl border border-slate-400">
-                <div className="w-16 h-16 bg-slate-400 rounded-xl flex items-center justify-center text-white font-semibold mr-6">
-                  <span className="text-lg">Q3</span>
+              <div className={`flex items-center ${isVerySmallMobile ? 'p-3' : 'p-6'} bg-slate-500 rounded-xl border border-slate-400`}>
+                <div className={`${isVerySmallMobile ? 'w-12 h-12' : 'w-16 h-16'} bg-slate-400 rounded-xl flex items-center justify-center text-white font-semibold ${isVerySmallMobile ? 'mr-3' : 'mr-6'}`}>
+                  <span className={`${isVerySmallMobile ? 'text-sm' : 'text-lg'}`}>Q3</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-white text-lg">Seguimiento</h3>
-                  <p className="text-slate-200 text-base">Evaluación de progreso y ajustes</p>
+                  <h3 className={`font-semibold text-white ${isVerySmallMobile ? 'text-base' : 'text-lg'}`}>Seguimiento</h3>
+                  <p className={`text-slate-200 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Evaluación de progreso y ajustes</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-base font-medium text-slate-400">Julio - Septiembre</p>
-                  <p className="text-sm text-slate-300">Pendiente</p>
+                  <p className={`font-medium text-slate-400 ${isVerySmallMobile ? 'text-sm' : 'text-base'}`}>Julio - Septiembre</p>
+                  <p className={`text-slate-300 ${isVerySmallMobile ? 'text-xs' : 'text-sm'}`}>Pendiente</p>
                 </div>
               </div>
             </div>
@@ -241,12 +241,12 @@ export const Planning: React.FC<PlanningProps> = () => {
 
         {/* Indicadores de Progreso */}
         <section className="mb-20">
-          <h2 className={`font-bold text-white mb-8 text-center ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+          <h2 className={`font-bold text-white mb-8 text-center ${isVerySmallMobile ? 'text-xl' : isMobile ? 'text-2xl' : 'text-3xl'}`}>
             Indicadores de Progreso
           </h2>
           
-          <div className={`grid gap-8 ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'}`}>
-            <div className="bg-slate-600 rounded-2xl shadow-lg p-8 border border-slate-500">
+          <div className={`grid ${isVerySmallMobile ? 'gap-4' : isMobile ? 'gap-6' : 'gap-8'} ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-2' : 'grid-cols-3'}`}>
+            <div className={`bg-slate-600 rounded-2xl shadow-lg border border-slate-500 ${isVerySmallMobile ? 'p-4' : 'p-8'}`}>
               <h3 className="text-xl font-bold text-white mb-4">Presupuesto Ejecutado</h3>
               <div className="mb-4">
                 <div className="flex justify-between text-sm mb-2">
@@ -260,7 +260,7 @@ export const Planning: React.FC<PlanningProps> = () => {
               <p className="text-slate-300 text-sm">$1.6M de $2.5M ejecutados</p>
             </div>
             
-            <div className="bg-slate-600 rounded-2xl shadow-lg p-8 border border-slate-500">
+            <div className={`bg-slate-600 rounded-2xl shadow-lg border border-slate-500 ${isVerySmallMobile ? 'p-4' : 'p-8'}`}>
               <h3 className="text-xl font-bold text-white mb-4">Planes Completados</h3>
               <div className="mb-4">
                 <div className="flex justify-between text-sm mb-2">
@@ -274,7 +274,7 @@ export const Planning: React.FC<PlanningProps> = () => {
               <p className="text-slate-300 text-sm">67% de planes completados</p>
             </div>
             
-            <div className="bg-slate-600 rounded-2xl shadow-lg p-8 border border-slate-500">
+            <div className={`bg-slate-600 rounded-2xl shadow-lg border border-slate-500 ${isVerySmallMobile ? 'p-4' : 'p-8'}`}>
               <h3 className="text-xl font-bold text-white mb-4">Eficiencia Presupuestaria</h3>
               <div className="mb-4">
                 <div className="flex justify-between text-sm mb-2">
@@ -292,11 +292,11 @@ export const Planning: React.FC<PlanningProps> = () => {
 
         {/* CTA */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-8 text-white">
-            <h2 className={`font-bold mb-4 ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+          <div className={`bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl text-white ${isVerySmallMobile ? 'p-6' : 'p-8'}`}>
+            <h2 className={`font-bold mb-4 ${isVerySmallMobile ? 'text-xl' : isMobile ? 'text-2xl' : 'text-3xl'}`}>
               ¿Necesitas revisar un presupuesto?
             </h2>
-            <p className={`mb-6 opacity-90 ${isMobile ? 'text-base' : 'text-lg'}`}>
+            <p className={`mb-6 opacity-90 ${isVerySmallMobile ? 'text-sm' : isMobile ? 'text-base' : 'text-lg'}`}>
               Contacta con el equipo de finanzas para obtener más información
             </p>
             <button className="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
